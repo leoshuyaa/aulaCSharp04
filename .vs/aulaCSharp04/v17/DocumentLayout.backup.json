@@ -1,0 +1,102 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\leonardo.hrpaulino\\Documents\\GitHub\\aulaCSharp04\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{712151E3-66C8-4557-95F7-F155561C2939}|aulaCSharp04\\aulaCSharp04.csproj|c:\\users\\leonardo.hrpaulino\\documents\\github\\aulacsharp04\\aulacsharp04\\telacadastrousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{712151E3-66C8-4557-95F7-F155561C2939}|aulaCSharp04\\aulaCSharp04.csproj|solutionrelative:aulacsharp04\\telacadastrousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{712151E3-66C8-4557-95F7-F155561C2939}|aulaCSharp04\\aulaCSharp04.csproj|c:\\users\\leonardo.hrpaulino\\documents\\github\\aulacsharp04\\aulacsharp04\\telaloding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{712151E3-66C8-4557-95F7-F155561C2939}|aulaCSharp04\\aulaCSharp04.csproj|solutionrelative:aulacsharp04\\telaloding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{712151E3-66C8-4557-95F7-F155561C2939}|aulaCSharp04\\aulaCSharp04.csproj|c:\\users\\leonardo.hrpaulino\\documents\\github\\aulacsharp04\\aulacsharp04\\telalogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{712151E3-66C8-4557-95F7-F155561C2939}|aulaCSharp04\\aulaCSharp04.csproj|solutionrelative:aulacsharp04\\telalogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{712151E3-66C8-4557-95F7-F155561C2939}|aulaCSharp04\\aulaCSharp04.csproj|c:\\users\\leonardo.hrpaulino\\documents\\github\\aulacsharp04\\aulacsharp04\\telalogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{712151E3-66C8-4557-95F7-F155561C2939}|aulaCSharp04\\aulaCSharp04.csproj|solutionrelative:aulacsharp04\\telalogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{712151E3-66C8-4557-95F7-F155561C2939}|aulaCSharp04\\aulaCSharp04.csproj|C:\\Users\\leonardo.hrpaulino\\Documents\\GitHub\\aulaCSharp04\\aulacsharp04\\telacadastrousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{712151E3-66C8-4557-95F7-F155561C2939}|aulaCSharp04\\aulaCSharp04.csproj|solutionrelative:aulacsharp04\\telacadastrousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "telaLogin.cs",
+              "DocumentMoniker": "C:\\Users\\leonardo.hrpaulino\\Documents\\GitHub\\aulaCSharp04\\aulaCSharp04\\telaLogin.cs",
+              "RelativeDocumentMoniker": "aulaCSharp04\\telaLogin.cs",
+              "ToolTip": "C:\\Users\\leonardo.hrpaulino\\Documents\\GitHub\\aulaCSharp04\\aulaCSharp04\\telaLogin.cs",
+              "RelativeToolTip": "aulaCSharp04\\telaLogin.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAqwC4AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T13:40:01.356Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "telaLogin.cs [Projeto]",
+              "DocumentMoniker": "C:\\Users\\leonardo.hrpaulino\\Documents\\GitHub\\aulaCSharp04\\aulaCSharp04\\telaLogin.cs",
+              "RelativeDocumentMoniker": "aulaCSharp04\\telaLogin.cs",
+              "ToolTip": "C:\\Users\\leonardo.hrpaulino\\Documents\\GitHub\\aulaCSharp04\\aulaCSharp04\\telaLogin.cs [Projeto]",
+              "RelativeToolTip": "aulaCSharp04\\telaLogin.cs [Projeto]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T13:39:59.187Z",
+              "EditorCaption": " [Projeto]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "telaLoding.cs [Projeto]",
+              "DocumentMoniker": "C:\\Users\\leonardo.hrpaulino\\Documents\\GitHub\\aulaCSharp04\\aulaCSharp04\\telaLoding.cs",
+              "RelativeDocumentMoniker": "aulaCSharp04\\telaLoding.cs",
+              "ToolTip": "C:\\Users\\leonardo.hrpaulino\\Documents\\GitHub\\aulaCSharp04\\aulaCSharp04\\telaLoding.cs [Projeto]",
+              "RelativeToolTip": "aulaCSharp04\\telaLoding.cs [Projeto]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T13:29:31.049Z",
+              "EditorCaption": " [Projeto]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "telaCadastroUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\leonardo.hrpaulino\\Documents\\GitHub\\aulaCSharp04\\aulaCSharp04\\telaCadastroUsuario.cs",
+              "RelativeDocumentMoniker": "aulaCSharp04\\telaCadastroUsuario.cs",
+              "ToolTip": "C:\\Users\\leonardo.hrpaulino\\Documents\\GitHub\\aulaCSharp04\\aulaCSharp04\\telaCadastroUsuario.cs",
+              "RelativeToolTip": "aulaCSharp04\\telaCadastroUsuario.cs",
+              "ViewState": "AgIAABEBAAAAAAAAAAAswB0BAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T12:14:39.569Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "telaCadastroUsuario.cs [Projeto]",
+              "DocumentMoniker": "C:\\Users\\leonardo.hrpaulino\\Documents\\GitHub\\aulaCSharp04\\aulaCSharp04\\telaCadastroUsuario.cs",
+              "RelativeDocumentMoniker": "aulaCSharp04\\telaCadastroUsuario.cs",
+              "ToolTip": "C:\\Users\\leonardo.hrpaulino\\Documents\\GitHub\\aulaCSharp04\\aulaCSharp04\\telaCadastroUsuario.cs [Projeto]",
+              "RelativeToolTip": "aulaCSharp04\\telaCadastroUsuario.cs [Projeto]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T11:46:34.602Z",
+              "EditorCaption": " [Projeto]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
