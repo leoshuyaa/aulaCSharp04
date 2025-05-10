@@ -3,20 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\leonardo.hrpaulino\\Documents\\GitHub\\aulaCSharp04\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{712151E3-66C8-4557-95F7-F155561C2939}|aulaCSharp04\\aulaCSharp04.csproj|c:\\users\\leonardo.hrpaulino\\documents\\github\\aulacsharp04\\aulacsharp04\\files\\basedados.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
-      "RelativeMoniker": "D:0:0:{712151E3-66C8-4557-95F7-F155561C2939}|aulaCSharp04\\aulaCSharp04.csproj|solutionrelative:aulacsharp04\\files\\basedados.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+      "AbsoluteMoniker": "D:0:0:{712151E3-66C8-4557-95F7-F155561C2939}|aulaCSharp04\\aulaCSharp04.csproj|c:\\users\\leonardo.hrpaulino\\documents\\github\\aulacsharp04\\aulacsharp04\\telaprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{712151E3-66C8-4557-95F7-F155561C2939}|aulaCSharp04\\aulaCSharp04.csproj|solutionrelative:aulacsharp04\\telaprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{712151E3-66C8-4557-95F7-F155561C2939}|aulaCSharp04\\aulaCSharp04.csproj|c:\\users\\leonardo.hrpaulino\\documents\\github\\aulacsharp04\\aulacsharp04\\telacadastrousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{712151E3-66C8-4557-95F7-F155561C2939}|aulaCSharp04\\aulaCSharp04.csproj|solutionrelative:aulacsharp04\\telacadastrousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{712151E3-66C8-4557-95F7-F155561C2939}|aulaCSharp04\\aulaCSharp04.csproj|C:\\Users\\leonardo.hrpaulino\\Documents\\GitHub\\aulaCSharp04\\aulacsharp04\\telacadastrousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{712151E3-66C8-4557-95F7-F155561C2939}|aulaCSharp04\\aulaCSharp04.csproj|solutionrelative:aulacsharp04\\telacadastrousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{712151E3-66C8-4557-95F7-F155561C2939}|aulaCSharp04\\aulaCSharp04.csproj|c:\\users\\leonardo.hrpaulino\\documents\\github\\aulacsharp04\\aulacsharp04\\files\\basedados.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
-      "RelativeMoniker": "D:0:0:{712151E3-66C8-4557-95F7-F155561C2939}|aulaCSharp04\\aulaCSharp04.csproj|solutionrelative:aulacsharp04\\files\\basedados.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{712151E3-66C8-4557-95F7-F155561C2939}|aulaCSharp04\\aulaCSharp04.csproj|c:\\users\\leonardo.hrpaulino\\documents\\github\\aulacsharp04\\aulacsharp04\\files\\basedados.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|ResultFrame",
-      "RelativeMoniker": "D:0:0:{712151E3-66C8-4557-95F7-F155561C2939}|aulaCSharp04\\aulaCSharp04.csproj|solutionrelative:aulacsharp04\\files\\basedados.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|ResultFrame"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,23 +22,40 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "BaseDados.sql ",
-              "DocumentMoniker": "C:\\Users\\leonardo.hrpaulino\\Documents\\GitHub\\aulaCSharp04\\aulaCSharp04\\Files\\BaseDados.sql",
-              "RelativeDocumentMoniker": "aulaCSharp04\\Files\\BaseDados.sql",
-              "ToolTip": "C:\\Users\\leonardo.hrpaulino\\Documents\\GitHub\\aulaCSharp04\\aulaCSharp04\\Files\\BaseDados.sql",
-              "RelativeToolTip": "aulaCSharp04\\Files\\BaseDados.sql",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-05-10T13:54:17.753Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "telaCadastroUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\leonardo.hrpaulino\\Documents\\GitHub\\aulaCSharp04\\aulaCSharp04\\telaCadastroUsuario.cs",
+              "RelativeDocumentMoniker": "aulaCSharp04\\telaCadastroUsuario.cs",
+              "ToolTip": "C:\\Users\\leonardo.hrpaulino\\Documents\\GitHub\\aulaCSharp04\\aulaCSharp04\\telaCadastroUsuario.cs",
+              "RelativeToolTip": "aulaCSharp04\\telaCadastroUsuario.cs",
+              "ViewState": "AgIAACgBAAAAAAAAAAAswD0BAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T14:19:01.758Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "telaPrincipal.cs [Projeto]",
+              "DocumentMoniker": "C:\\Users\\leonardo.hrpaulino\\Documents\\GitHub\\aulaCSharp04\\aulaCSharp04\\telaPrincipal.cs",
+              "RelativeDocumentMoniker": "aulaCSharp04\\telaPrincipal.cs",
+              "ToolTip": "C:\\Users\\leonardo.hrpaulino\\Documents\\GitHub\\aulaCSharp04\\aulaCSharp04\\telaPrincipal.cs [Projeto]",
+              "RelativeToolTip": "aulaCSharp04\\telaPrincipal.cs [Projeto]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T14:17:12.371Z",
+              "EditorCaption": " [Projeto]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "telaCadastroUsuario.cs [Projeto]",
               "DocumentMoniker": "C:\\Users\\leonardo.hrpaulino\\Documents\\GitHub\\aulaCSharp04\\aulaCSharp04\\telaCadastroUsuario.cs",
               "RelativeDocumentMoniker": "aulaCSharp04\\telaCadastroUsuario.cs",

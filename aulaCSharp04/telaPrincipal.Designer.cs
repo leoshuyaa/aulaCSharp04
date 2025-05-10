@@ -87,7 +87,7 @@
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "telaPrincipal";
-            Text = "Menu";
+            Text = "Tela Principal";
             FormClosed += telaPrincipal_FormClosed;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

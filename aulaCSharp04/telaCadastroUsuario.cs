@@ -89,7 +89,7 @@ namespace aulaCSharp04
             txtSenha.Clear();
             txtConfirmarSenha.Clear();
             comboTipoUsuario.SelectedIndex = 0;
-        }
+        }        
 
         private void btnLimpar_Click(object sender, EventArgs e)
         {
@@ -98,7 +98,32 @@ namespace aulaCSharp04
 
         private void btnIncluir_Click(object sender, EventArgs e)
         {
-            bool cadastroValidado = ValidaCadastro();
+            string campoNome = txtNome.Text;
+            string campoEmail = txtEmail.Text;
+            string campoDocumento = txtDocumento.Text;
+            string campoCelular = txtCelular.Text;
+            string campoSenha = txtSenha.Text;
+            string campoConfirmarSenha = txtConfirmarSenha.Text;
+            int campoTipoUsuario = comboTipoUsuario.SelectedIndex;
+            int campoCodigo;
+            if (string.IsNullOrWhiteSpace(txtCodigo.Text))
+            {
+                campoCodigo = 0;
+            }
+            else
+            {
+                campoCodigo = int.Parse(txtCodigo.Text);
+            }
+
+            bool cadastroValidado = ValidaCadastro(campoNome: campoNome
+                                                  , campoEmail: campoEmail
+                                                  , campoDocumento: campoDocumento
+                                                  , campoCelular: campoCelular
+                                                  , campoSenha: campoSenha
+                                                  , campoConfirmarSenha: campoConfirmarSenha
+                                                  , campoTipoUsuario: campoTipoUsuario
+                                                  , campoCodigo: campoCodigo
+                                                  );
             if (cadastroValidado)
             {
                 telaLoding telaEmProcessamento = new telaLoding();
@@ -116,17 +141,17 @@ namespace aulaCSharp04
 
         }
 
-        private bool ValidaCadastro()
+        private bool ValidaCadastro( string campoNome
+                                   , string campoEmail
+                                   , string campoDocumento
+                                   , string campoCelular
+                                   , string campoSenha
+                                   , string campoConfirmarSenha
+                                   , int campoTipoUsuario
+                                   , int campoCodigo
+                                   )
         {
-            ToolTip toolTip = new ToolTip();
-            string campoNome = txtNome.Text;
-            string campoEmail = txtEmail.Text;
-            string campoDocumento = txtDocumento.Text;
-            string campoCelular = txtCelular.Text;
-            string campoSenha = txtSenha.Text;
-            string campoConfirmarSenha = txtConfirmarSenha.Text;
-            int campoTipoUsuario = comboTipoUsuario.SelectedIndex;
-            //int campoCodigo = int.Parse(txtCodigo.Text);
+            ToolTip toolTip = new ToolTip();            
 
             if (string.IsNullOrWhiteSpace(campoNome) ||
                 string.IsNullOrWhiteSpace(campoEmail) ||
@@ -285,7 +310,32 @@ namespace aulaCSharp04
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            bool cadastroValidado = ValidaCadastro();
+            string campoNome = txtNome.Text;
+            string campoEmail = txtEmail.Text;
+            string campoDocumento = txtDocumento.Text;
+            string campoCelular = txtCelular.Text;
+            string campoSenha = txtSenha.Text;
+            string campoConfirmarSenha = txtConfirmarSenha.Text;
+            int campoTipoUsuario = comboTipoUsuario.SelectedIndex;
+            int campoCodigo;
+            if (string.IsNullOrWhiteSpace(txtCodigo.Text))
+            {
+                campoCodigo = 0;
+            }
+            else
+            {
+                campoCodigo = int.Parse(txtCodigo.Text);
+            }
+
+            bool cadastroValidado = ValidaCadastro(campoNome: campoNome
+                                                  , campoEmail: campoEmail
+                                                  , campoDocumento: campoDocumento
+                                                  , campoCelular: campoCelular
+                                                  , campoSenha: campoSenha
+                                                  , campoConfirmarSenha: campoConfirmarSenha
+                                                  , campoTipoUsuario: campoTipoUsuario
+                                                  , campoCodigo: campoCodigo
+                                                  );
             if (cadastroValidado)
             {
                 efetuarCadastro(tipoAcao: 2);
