@@ -71,3 +71,7 @@ SELECT *
 --          , (2, GETDATE(), 1050, 3, 'Recebimento 03')
 --          , (2, GETDATE(), 1050, 4, 'Recebimento 03')
 
+
+
+
+--TIT0676511W11-1\SQLEXPRESS

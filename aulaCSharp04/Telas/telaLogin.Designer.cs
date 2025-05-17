@@ -60,6 +60,8 @@
             txtLogin.PlaceholderText = "Informe seu Login ou E-mail";
             txtLogin.Size = new Size(364, 23);
             txtLogin.TabIndex = 0;
+            txtLogin.Text = "lhrp";
+            txtLogin.TextChanged += txtLogin_TextChanged;
             // 
             // groupBox2
             // 
@@ -79,6 +81,7 @@
             txtSenha.PlaceholderText = "Informe Sua Senha";
             txtSenha.Size = new Size(364, 23);
             txtSenha.TabIndex = 0;
+            txtSenha.Text = "3595";
             // 
             // groupBox3
             // 

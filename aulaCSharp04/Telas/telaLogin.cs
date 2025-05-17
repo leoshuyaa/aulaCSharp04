@@ -43,10 +43,15 @@ namespace aulaCSharp04
             telaLoding telaEmProcessamento = new telaLoding();
             telaEmProcessamento.Visible = true;
 
-            
+
 
 
             telaEmProcessamento.Visible = false;
+        }
+
+        private void txtLogin_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
