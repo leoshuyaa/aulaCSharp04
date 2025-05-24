@@ -16,5 +16,11 @@ namespace aulaCSharp04
         {
             InitializeComponent();
         }
+
+        private void telaLoding_Load(object sender, EventArgs e)
+        {
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(0, Screen.PrimaryScreen.WorkingArea.Height - this.Height);
+        }
     }
 }

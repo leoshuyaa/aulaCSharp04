@@ -22,7 +22,21 @@ namespace aulaCSharp04.BancoDados
             using (SqlConnection conexao = new SqlConnection(stringConexao()))
             {
                 conexao.Open();
-                string query = "SELECT * FROM tbUsuario WHERE status_usuario = 1";
+                string query = "SELECT 'Código'    = tbUsuario.id_usuario                   " +
+                               "     , 'Tipo'      = CASE WHEN tbUsuario.tp_usuario = 1     " +
+                               "                          THEN 'Cliente'                    " +
+                               "                          ELSE 'Usuário'                    " +
+                               "                     END                                    " +
+                               "     , 'Nome'      = tbUsuario.nome_usuario                 " +
+                               "     , 'E-mail'    = tbUsuario.email_usuario                " +
+                               "     , 'Documento' = tbUsuario.documento_usuario            " +
+                               "     , 'Celular'   = tbUsuario.celular_usuario              " +
+                               //"     , 'Status'    = CASE WHEN tbUsuario.status_usuario = 1 " +
+                               //"                          THEN '1-Ativo'                    " +
+                               //"                          ELSE '0-Inativo'                  " +
+                               //"                     END                                    " +
+                               "  FROM tbUsuario                                            " +
+                               " WHERE tbUsuario.status_usuario = 1                         ";
                 using (SqlCommand comando = new SqlCommand(query, conexao))
                 {
                     using (SqlDataReader leitor = comando.ExecuteReader())
@@ -102,16 +116,31 @@ namespace aulaCSharp04.BancoDados
                                           , int campoTipoUsuario
                                           , int campoCodigo
                                           )
-        {
-
+        {          
             if (tipoAcao == 1) {
                 using (SqlConnection conexao = new SqlConnection(stringConexao()))
                 {
                     try
                     {
                         conexao.Open();
-                        string query = "INSERT INTO tbUsuario ( tp_usuario, nome_usuario, email_usuario, documento_usuario, celular_usuario, senha_usuario) " +
-                            "VALUES (@campoTipoUsuario, @campoNome, @campoEmail, @campoDocumento, @campoCelular, @campoSenha)";
+                        string query = "INSERT INTO tbUsuario                " +
+                                       " ( tp_usuario                        " +
+                                       " , nome_usuario                      " +
+                                       " , email_usuario                     " +
+                                       " , documento_usuario                 " +
+                                       " , celular_usuario                   " +
+                                       " , senha_usuario                     " +
+                                       " )                                   " +
+                                       " VALUES ( @campoTipoUsuario          " +
+                                       "        , @campoNome                 " +
+                                       "        , @campoEmail                " +
+                                       "        , @campoDocumento            " +
+                                       "        , @campoCelular              " +
+                                       "        , CASE WHEN @campoSenha = '' " +
+                                       "               THEN NULL             " +
+                                       "               ELSE @campoSenha      " +
+                                       "               END                   " +
+                                       "        )                            ";
 
                         using (SqlCommand comando = new SqlCommand(query, conexao))
                         {
@@ -146,7 +175,10 @@ namespace aulaCSharp04.BancoDados
                             ", email_usuario = @campoEmail" +
                             ", documento_usuario = @campoDocumento" +
                             ", celular_usuario = @campoCelular" +
-                            ", senha_usuario = @campoSenha" +
+                            ", senha_usuario = CASE WHEN @campoSenha = ''" +
+                            "                       THEN senha_usuario" +
+                            "                       ELSE @campoSenha" +
+                            "                  END                  " +
                             " WHERE tbUsuario.id_usuario = @campoCodigo";
 
                         using (SqlCommand comando = new SqlCommand(query, conexao))

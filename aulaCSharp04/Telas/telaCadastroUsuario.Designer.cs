@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             comboTipoUsuario = new ComboBox();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
@@ -35,7 +36,7 @@
             groupNome = new GroupBox();
             txtNome = new TextBox();
             groupBox4 = new GroupBox();
-            txtDocumento = new TextBox();
+            txtDocumento = new MaskedTextBox();
             groupBox5 = new GroupBox();
             txtEmail = new TextBox();
             groupBox6 = new GroupBox();
@@ -49,7 +50,12 @@
             groupConfirmarSenha = new GroupBox();
             txtConfirmarSenha = new TextBox();
             gridUsuarios = new DataGridView();
+            menuContexto = new ContextMenuStrip(components);
+            menuContextoListar = new ToolStripMenuItem();
+            menuContextoExcluir = new ToolStripMenuItem();
             btnLimpar = new Button();
+            groupBox3 = new GroupBox();
+            comboTipoDocumento = new ComboBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupNome.SuspendLayout();
@@ -59,6 +65,8 @@
             groupSenha.SuspendLayout();
             groupConfirmarSenha.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gridUsuarios).BeginInit();
+            menuContexto.SuspendLayout();
+            groupBox3.SuspendLayout();
             SuspendLayout();
             // 
             // comboTipoUsuario
@@ -121,7 +129,7 @@
             // groupBox4
             // 
             groupBox4.Controls.Add(txtDocumento);
-            groupBox4.Location = new Point(12, 240);
+            groupBox4.Location = new Point(223, 240);
             groupBox4.Name = "groupBox4";
             groupBox4.Size = new Size(325, 51);
             groupBox4.TabIndex = 4;
@@ -252,12 +260,41 @@
             // 
             gridUsuarios.AllowUserToDeleteRows = false;
             gridUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gridUsuarios.ContextMenuStrip = menuContexto;
             gridUsuarios.Location = new Point(12, 414);
             gridUsuarios.Name = "gridUsuarios";
             gridUsuarios.Size = new Size(867, 189);
             gridUsuarios.TabIndex = 13;
+            gridUsuarios.CellClick += gridUsuarios_CellClick;
             gridUsuarios.CellContentClick += gridUsuarios_CellContentClick;
             gridUsuarios.CellContentDoubleClick += gridUsuarios_CellContentDoubleClick;
+            gridUsuarios.DataBindingComplete += gridUsuarios_DataBindingComplete;
+            gridUsuarios.SelectionChanged += gridUsuarios_SelectionChanged;
+            gridUsuarios.KeyDown += gridUsuarios_KeyDown;
+            gridUsuarios.MouseDown += gridUsuarios_MouseDown;
+            // 
+            // menuContexto
+            // 
+            menuContexto.Items.AddRange(new ToolStripItem[] { menuContextoListar, menuContextoExcluir });
+            menuContexto.Name = "menuContexto";
+            menuContexto.Size = new Size(148, 48);
+            menuContexto.Opening += menuContexto_Opening;
+            // 
+            // menuContextoListar
+            // 
+            menuContextoListar.Name = "menuContextoListar";
+            menuContextoListar.Size = new Size(147, 22);
+            menuContextoListar.Text = "Atualizar Lista";
+            menuContextoListar.ToolTipText = "Atualizar a lista de usuários";
+            menuContextoListar.Click += menuContextoListar_Click;
+            // 
+            // menuContextoExcluir
+            // 
+            menuContextoExcluir.Name = "menuContextoExcluir";
+            menuContextoExcluir.Size = new Size(147, 22);
+            menuContextoExcluir.Text = "Excluir";
+            menuContextoExcluir.ToolTipText = "Excluir o cadastro do usuário selecionado";
+            menuContextoExcluir.Click += menuContextoExcluir_Click;
             // 
             // btnLimpar
             // 
@@ -269,11 +306,33 @@
             btnLimpar.UseVisualStyleBackColor = true;
             btnLimpar.Click += btnLimpar_Click;
             // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(comboTipoDocumento);
+            groupBox3.Location = new Point(12, 240);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(172, 51);
+            groupBox3.TabIndex = 2;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Tipo de Documento";
+            // 
+            // comboTipoDocumento
+            // 
+            comboTipoDocumento.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboTipoDocumento.FormattingEnabled = true;
+            comboTipoDocumento.Items.AddRange(new object[] { "CNPJ", "CPF" });
+            comboTipoDocumento.Location = new Point(6, 22);
+            comboTipoDocumento.Name = "comboTipoDocumento";
+            comboTipoDocumento.Size = new Size(160, 23);
+            comboTipoDocumento.TabIndex = 1;
+            comboTipoDocumento.SelectedIndexChanged += comboTipoDocumento_SelectedIndexChanged;
+            // 
             // telaCadastroUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(891, 620);
+            Controls.Add(groupBox3);
             Controls.Add(gridUsuarios);
             Controls.Add(groupConfirmarSenha);
             Controls.Add(groupSenha);
@@ -311,6 +370,8 @@
             groupConfirmarSenha.ResumeLayout(false);
             groupConfirmarSenha.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)gridUsuarios).EndInit();
+            menuContexto.ResumeLayout(false);
+            groupBox3.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -329,7 +390,7 @@
         private Button btnExcluir;
         private TextBox txtCodigo;
         private TextBox txtNome;
-        private TextBox txtDocumento;
+        private MaskedTextBox txtDocumento;
         private TextBox txtEmail;
         private TextBox txtCelular;
         private GroupBox groupSenha;
@@ -338,5 +399,10 @@
         private TextBox txtConfirmarSenha;
         private DataGridView gridUsuarios;
         private Button btnLimpar;
+        private ContextMenuStrip menuContexto;
+        private ToolStripMenuItem menuContextoListar;
+        private ToolStripMenuItem menuContextoExcluir;
+        private GroupBox groupBox3;
+        private ComboBox comboTipoDocumento;
     }
 }

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,9 +15,27 @@ namespace aulaCSharp04
 {
     public partial class telaCadastroUsuario : Form
     {
+
+        private telaLoding telaEmProcessamento = new telaLoding();
+        private int alterandoSenha = 0;
+        private bool alteracaoAutomatica = true;
+        private void loading(char cTipoAcao)
+        {
+            if (cTipoAcao == '1')
+            {
+                telaEmProcessamento.Visible = true;
+            }
+            else if (cTipoAcao == '2')
+            {
+                telaEmProcessamento.Visible = false;
+            }
+            Application.DoEvents(); // Atualiza a interface antes de seguir para o processamento
+        }
+
         public telaCadastroUsuario()
         {
             InitializeComponent();
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -69,11 +88,16 @@ namespace aulaCSharp04
         private void telaCadastroUsuario_Load(object sender, EventArgs e)
         {
             comboTipoUsuario.SelectedIndex = 0;
+            comboTipoDocumento.SelectedIndex = 0;
             btnAlterar.Enabled = false;
             btnExcluir.Enabled = false;
             txtCodigo.ReadOnly = true;
             gridUsuarios.ReadOnly = true;
             gridUsuarios.AllowUserToAddRows = false;
+            gridUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            alteracaoAutomatica = true;
+            this.MaximizeBox = false; // Desabilita o botão de maximizar
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             carregarGrid();
             validaTipoUsuario();
 
@@ -81,34 +105,26 @@ namespace aulaCSharp04
 
         private void gridUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            //int codigoUsuarioSelecionado;
+            //DataTable dadosUsuarioSelecionado = new DataTable();
+            //if (e.RowIndex >= 0)
+            //{
+            //    codigoUsuarioSelecionado = Convert.ToInt32(gridUsuarios.Rows[e.RowIndex].Cells[0].Value);
 
+            //    carregarDadosUsuario(codigoUsuarioSelecionado);
+            //}
         }
 
         private void gridUsuarios_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int codigoUsuarioSelecionado;
-            DataTable dadosUsuarioSelecionado = new DataTable();
-            if (e.RowIndex >= 0)
-            {
-                codigoUsuarioSelecionado = Convert.ToInt32(gridUsuarios.Rows[e.RowIndex].Cells[0].Value);
+            //int codigoUsuarioSelecionado;
+            //DataTable dadosUsuarioSelecionado = new DataTable();
+            //if (e.RowIndex >= 0)
+            //{
+            //    codigoUsuarioSelecionado = Convert.ToInt32(gridUsuarios.Rows[e.RowIndex].Cells[0].Value);
 
-                dadosUsuarioSelecionado = FuncoesBanco.ConsultarUsuario(campoCodigo: codigoUsuarioSelecionado);
-                if (dadosUsuarioSelecionado is not null)
-                {
-                    limparCampos();
-                    comboTipoUsuario.SelectedIndex = int.Parse(dadosUsuarioSelecionado.Rows[0]["tp_usuario"].ToString());
-                    txtCodigo.Text = dadosUsuarioSelecionado.Rows[0]["id_usuario"].ToString();
-                    txtNome.Text = dadosUsuarioSelecionado.Rows[0]["nome_usuario"].ToString();
-                    txtEmail.Text = dadosUsuarioSelecionado.Rows[0]["email_usuario"].ToString();
-                    txtDocumento.Text = dadosUsuarioSelecionado.Rows[0]["documento_usuario"].ToString();
-                    txtCelular.Text = dadosUsuarioSelecionado.Rows[0]["celular_usuario"].ToString();
-
-                    btnAlterar.Enabled = true;
-                    btnExcluir.Enabled = true;
-                    btnIncluir.Enabled = false;
-
-                }
-            }
+            //    carregarDadosUsuario(codigoUsuarioSelecionado);
+            //}
 
 
         }
@@ -120,6 +136,7 @@ namespace aulaCSharp04
 
         private void limparCampos()
         {
+            loading('1');
             txtCodigo.Clear();
             txtNome.Clear();
             txtEmail.Clear();
@@ -128,18 +145,23 @@ namespace aulaCSharp04
             txtSenha.Clear();
             txtConfirmarSenha.Clear();
             comboTipoUsuario.SelectedIndex = 0;
+            comboTipoDocumento.SelectedIndex = 0;
+            btnIncluir.Enabled = true;
+            btnAlterar.Enabled = false;
+            btnExcluir.Enabled = false;
+            alterandoSenha = 0;
+            loading('2');
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)
         {
-            btnIncluir.Enabled = true;
-            btnAlterar.Enabled = false;
-            btnExcluir.Enabled = false;
             limparCampos();
         }
 
         private void btnIncluir_Click(object sender, EventArgs e)
         {
+            loading('1');
+
             string campoNome = txtNome.Text;
             string campoEmail = txtEmail.Text;
             string campoDocumento = txtDocumento.Text;
@@ -179,20 +201,15 @@ namespace aulaCSharp04
                                               );
             if (cadastroValidado)
             {
-                telaLoding telaEmProcessamento = new telaLoding();
-                telaEmProcessamento.Visible = true;
-
-                Task.Delay(3);
 
 
                 efetuarCadastro(tipoAcao: 1);
 
-
-                telaEmProcessamento.Visible = false;
             }
             else
             {
             }
+            loading('2');
 
         }
 
@@ -258,21 +275,27 @@ namespace aulaCSharp04
             // Validação do campo Senha (apenas para usuários do tipo 1)
             if (campoTipoUsuario == 0 && string.IsNullOrWhiteSpace(campoSenha))
             {
-                txtSenha.BackColor = Color.Red;
-                txtSenha.ForeColor = Color.White;
-                toolTip.SetToolTip(txtSenha, "O campo Senha não pode estar vazio!");
-                toolTip.Show("O campo Senha não pode estar vazio!", txtSenha, 0, txtSenha.Height, 2000);
-                txtSenha.Focus();
+                if (alterandoSenha == 0)
+                {
+                    txtSenha.BackColor = Color.Red;
+                    txtSenha.ForeColor = Color.White;
+                    toolTip.SetToolTip(txtSenha, "O campo Senha não pode estar vazio!");
+                    toolTip.Show("O campo Senha não pode estar vazio!", txtSenha, 0, txtSenha.Height, 2000);
+                    txtSenha.Focus();
+                }
             }
 
             // Validação do campo Senha (apenas para usuários do tipo 1)
             if (campoTipoUsuario == 0 && string.IsNullOrWhiteSpace(campoConfirmarSenha))
             {
-                txtConfirmarSenha.BackColor = Color.Red;
-                txtConfirmarSenha.ForeColor = Color.White;
-                toolTip.SetToolTip(txtSenha, "O campo Confirmar Senha não pode estar vazio!");
-                toolTip.Show("O campo Confirmar Senha não pode estar vazio!", txtConfirmarSenha, 0, txtConfirmarSenha.Height, 2000);
-                txtConfirmarSenha.Focus();
+                if (alterandoSenha == 0)
+                {
+                    txtConfirmarSenha.BackColor = Color.Red;
+                    txtConfirmarSenha.ForeColor = Color.White;
+                    toolTip.SetToolTip(txtSenha, "O campo Confirmar Senha não pode estar vazio!");
+                    toolTip.Show("O campo Confirmar Senha não pode estar vazio!", txtConfirmarSenha, 0, txtConfirmarSenha.Height, 2000);
+                    txtConfirmarSenha.Focus();
+                }
             }
 
             if (string.IsNullOrWhiteSpace(campoNome) ||
@@ -288,14 +311,20 @@ namespace aulaCSharp04
                                          )
                 )
             {
-                MessageBox.Show("Existem campos sem preenchimento, por favor os revise");
+                if (alterandoSenha == 0)
+                {
+                    MessageBox.Show("Existem campos sem preenchimento, por favor os revise");
+                }
             }
             if (campoTipoUsuario == 0 && (string.IsNullOrWhiteSpace(campoConfirmarSenha)
                                            || string.IsNullOrWhiteSpace(campoSenha)
                                          )
                 )
             {
-                return false;
+                if (alterandoSenha == 0)
+                {
+                    return false;
+                }
             }
 
 
@@ -333,7 +362,7 @@ namespace aulaCSharp04
             {
                 txtDocumento.BackColor = Color.White;
                 txtDocumento.ForeColor = Color.Black;
-            }
+            }            
         }
 
         private void txtCelular_TextChanged(object sender, EventArgs e)
@@ -365,6 +394,7 @@ namespace aulaCSharp04
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
+            loading('1');
             string campoNome = txtNome.Text;
             string campoEmail = txtEmail.Text;
             string campoDocumento = txtDocumento.Text;
@@ -398,13 +428,14 @@ namespace aulaCSharp04
             else
             {
             }
+            loading('2');
         }
 
         private void efetuarCadastro(int tipoAcao)
         {
             string campoNome = txtNome.Text;
             string campoEmail = txtEmail.Text;
-            string campoDocumento = txtDocumento.Text;
+            string campoDocumento = txtDocumento.Text.Replace(",", ".");
             string campoCelular = txtCelular.Text;
             string campoSenha = txtSenha.Text;
             string campoConfirmarSenha = txtConfirmarSenha.Text;
@@ -434,7 +465,7 @@ namespace aulaCSharp04
                                                       );
                 if (retorno)
                 {
-                    MessageBox.Show($"{campoNome} foi cadastrado com sucesso!");
+                    //MessageBox.Show($"{campoNome} foi cadastrado com sucesso!");
                     carregarGrid();
                 }
 
@@ -457,10 +488,6 @@ namespace aulaCSharp04
                     carregarGrid();
 
                 }
-
-                btnIncluir.Enabled = true;
-                btnAlterar.Enabled = false;
-                btnExcluir.Enabled = false;
             }
 
             limparCampos();
@@ -469,36 +496,183 @@ namespace aulaCSharp04
 
         private void carregarGrid()
         {
+
             gridUsuarios.DataSource = null;
             gridUsuarios.Rows.Clear();
             gridUsuarios.Refresh();
             gridUsuarios.DataSource = FuncoesBanco.ListarUsuarios();
+            gridUsuarios.AutoResizeColumns();
             gridUsuarios.Refresh();
+
         }
 
-        private void btnExcluir_Click(object sender, EventArgs e)
+        private void removerUsuario(int campoCodigo)
         {
-            DialogResult validaAcao = MessageBox.Show($"Deseja realmente remover o {txtNome.Text}?", "Confirmação", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DataTable dadosUsuario = FuncoesBanco.ConsultarUsuario(campoCodigo: campoCodigo);
+            string nomeUsuario = dadosUsuario.Rows[0]["nome_usuario"].ToString();
+            DialogResult validaAcao = MessageBox.Show($"Deseja realmente remover o {nomeUsuario}?", "Confirmação", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
             if (validaAcao == DialogResult.OK)
             {
-                int campoCodigo = int.Parse(txtCodigo.Text);
                 bool retorno = false;
                 retorno = FuncoesBanco.RemoverUsuario(campoCodigo: campoCodigo);
                 if (retorno)
                 {
-                    MessageBox.Show($"{txtNome.Text} removido com sucesso!");
+                    MessageBox.Show($"{nomeUsuario} removido com sucesso!");
                 }
             }
 
-            limparCampos();
             carregarGrid();
+            limparCampos();
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCodigo.Text))
+            {
+                int campoCodigo = int.Parse(txtCodigo.Text);
+                removerUsuario(campoCodigo: campoCodigo);
+            }
 
         }
 
         private void telaCadastroUsuario_Shown(object sender, EventArgs e)
         {
             txtNome.Focus();
+        }
+
+        private void gridUsuarios_KeyDown(object sender, KeyEventArgs e)
+        {
+            int codigoUsuarioSelecionado;
+
+            if (e.Control && e.KeyCode == Keys.Delete)
+            {
+                // Garante que uma linha esteja selecionada
+                if (gridUsuarios.SelectedRows.Count > 0)
+                {
+                    // Obtém o ID da primeira célula da linha selecionada
+                    codigoUsuarioSelecionado = Convert.ToInt32(gridUsuarios.SelectedRows[0].Cells[0].Value);
+                    removerUsuario(campoCodigo: codigoUsuarioSelecionado);
+
+                }
+            }
+        }
+
+        private void menuContexto_Opening(object sender, CancelEventArgs e)
+        {
+            if (gridUsuarios.SelectedRows.Count > 0)
+            {
+                menuContexto.Visible = false;
+            }
+            else
+            {
+                menuContexto.Visible = true;
+            }
+
+        }
+
+        private void menuContextoExcluir_Click(object sender, EventArgs e)
+        {
+
+            int codigoUsuarioSelecionado = Convert.ToInt32(gridUsuarios.CurrentRow.Cells[0].Value);
+            removerUsuario(campoCodigo: codigoUsuarioSelecionado);
+        }
+
+        private void menuContextoListar_Click(object sender, EventArgs e)
+        {
+            carregarGrid();
+        }
+
+        private void gridUsuarios_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                DataGridView.HitTestInfo info = gridUsuarios.HitTest(e.X, e.Y);
+
+                if (info.RowIndex >= 0)
+                {
+                    gridUsuarios.ClearSelection();
+                    gridUsuarios.Rows[info.RowIndex].Selected = true;
+                    gridUsuarios.CurrentCell = gridUsuarios.Rows[info.RowIndex].Cells[0];
+
+                    int codigoUsuarioSelecionado = Convert.ToInt32(gridUsuarios.CurrentRow.Cells[0].Value);
+                    carregarDadosUsuario(codigoUsuarioSelecionado);
+
+                }
+            }
+        }
+
+        private void carregarDadosUsuario(int codigoUsuarioSelecionado)
+        {
+            DataTable dadosUsuarioSelecionado = new DataTable();
+
+            dadosUsuarioSelecionado = FuncoesBanco.ConsultarUsuario(campoCodigo: codigoUsuarioSelecionado);
+            if (dadosUsuarioSelecionado is not null)
+            {
+                limparCampos();
+                comboTipoUsuario.SelectedIndex = int.Parse(dadosUsuarioSelecionado.Rows[0]["tp_usuario"].ToString());
+                txtCodigo.Text = dadosUsuarioSelecionado.Rows[0]["id_usuario"].ToString();
+                txtNome.Text = dadosUsuarioSelecionado.Rows[0]["nome_usuario"].ToString();
+                txtEmail.Text = dadosUsuarioSelecionado.Rows[0]["email_usuario"].ToString();
+                txtDocumento.Text = dadosUsuarioSelecionado.Rows[0]["documento_usuario"].ToString();
+
+                string texto = txtDocumento.Text.Replace(".", "").Replace("-", "").Replace("/", "").Replace("_", "").Replace(",", "").Replace(" ", "");
+
+
+                if (texto.Length > 11)
+                {
+                    comboTipoDocumento.SelectedIndex = 0;
+                }
+                else
+                {
+                    comboTipoDocumento.SelectedIndex = 1;
+                }
+
+                txtCelular.Text = dadosUsuarioSelecionado.Rows[0]["celular_usuario"].ToString();
+
+                btnAlterar.Enabled = true;
+                btnExcluir.Enabled = true;
+                btnIncluir.Enabled = false;
+
+                alterandoSenha = 1;
+
+            }
+        }
+
+        private void gridUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (gridUsuarios.CurrentRow != null)
+            {
+                int codigoUsuarioSelecionado = Convert.ToInt32(gridUsuarios.CurrentRow.Cells[0].Value);
+                carregarDadosUsuario(codigoUsuarioSelecionado);
+            }
+            alteracaoAutomatica = false;
+        }
+
+        private void gridUsuarios_SelectionChanged(object sender, EventArgs e)
+        {
+            if (!alteracaoAutomatica && gridUsuarios.CurrentRow != null)
+            {
+                int codigoUsuarioSelecionado = Convert.ToInt32(gridUsuarios.CurrentRow.Cells[0].Value);
+                carregarDadosUsuario(codigoUsuarioSelecionado);
+            }
+        }
+
+        private void gridUsuarios_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+
+        }
+
+        private void comboTipoDocumento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboTipoDocumento.SelectedIndex == 0) // CNPJ
+            {
+                txtDocumento.Mask = "00.000.000/0000-00";
+            }
+            else // CPF
+            {
+                txtDocumento.Mask = "000.000.000-00";
+            }
         }
     }
 }

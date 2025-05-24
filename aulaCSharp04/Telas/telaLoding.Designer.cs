@@ -53,8 +53,8 @@
             MaximumSize = new Size(250, 190);
             MinimumSize = new Size(250, 190);
             Name = "telaLoding";
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "telaLoding";
+            Load += telaLoding_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
